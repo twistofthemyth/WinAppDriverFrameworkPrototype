@@ -1,8 +1,7 @@
-package ru.twistofthemyth.windriverprototype;
+package ru.twistofthemyth.windriverprototype.appium;
 
 import io.appium.java_client.windows.WindowsDriver;
 import lombok.SneakyThrows;
-import lombok.extern.java.Log;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.twistofthemyth.windriverprototype.config.Config;

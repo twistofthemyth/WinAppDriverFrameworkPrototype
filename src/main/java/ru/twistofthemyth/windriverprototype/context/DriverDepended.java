@@ -1,14 +1,25 @@
 package ru.twistofthemyth.windriverprototype.context;
 
+import io.appium.java_client.windows.WindowsDriver;
+import io.appium.java_client.windows.WindowsElement;
 import org.openqa.selenium.WebDriver;
 
 public interface DriverDepended {
 
     default WebDriver getDriver() {
-        return ContextContainer.get(WebDriver.class).orElseThrow();
+        return ThreadContainer.get(WebDriver.class).orElseThrow();
+    }
+
+    @SuppressWarnings("unchecked")
+    default WindowsDriver<WindowsElement> getWindowsDriver() {
+        if (getDriver() instanceof WindowsDriver<?>) {
+            return (WindowsDriver<WindowsElement>) getDriver();
+        } else {
+            throw new IllegalStateException();
+        }
     }
 
     default void setDriver(WebDriver driver) {
-        ContextContainer.put(WebDriver.class, driver);
+        ThreadContainer.put(WebDriver.class, driver);
     }
 }

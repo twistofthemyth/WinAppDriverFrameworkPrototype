@@ -1,23 +1,25 @@
 package ru.twistofthemyth.windriverprototype;
 
 import lombok.extern.java.Log;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import ru.twistofthemyth.windriverprototype.appium.DriverFactory;
 import ru.twistofthemyth.windriverprototype.context.DriverDepended;
 
 
 @Log
 public abstract class AbstractTest implements DriverDepended {
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void init() {
         log.info("init test");
         setDriver(new DriverFactory().windowsDriver());
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     private void teardown() {
         log.info("tear down test");
-        getDriver().close();
+        getWindowsDriver().closeApp();
+        getWindowsDriver().close();
     }
 }

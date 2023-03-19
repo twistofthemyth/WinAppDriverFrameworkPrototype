@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class ContextContainer {
+public class ThreadContainer {
 
-    private ContextContainer() {
+    private ThreadContainer() {
         throw new IllegalAccessError();
     }
 
@@ -20,6 +20,7 @@ public class ContextContainer {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> Optional<T> get(Class<T> clazz) {
         T instance = null;
         if (THREAD_LOCAL_MAP.containsKey(clazz) &&

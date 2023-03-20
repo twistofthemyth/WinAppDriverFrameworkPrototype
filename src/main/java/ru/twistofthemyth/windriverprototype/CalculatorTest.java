@@ -9,10 +9,10 @@ public class CalculatorTest extends AbstractTest {
     public void standardCalculatorTest() {
         StandardCalculatorPage standardCalculator = new StandardCalculatorPage();
 
-        standardCalculator.numButton(2).find().click();
-        standardCalculator.plusButton().find().click();
-        standardCalculator.numButton(2).find().click();
-        standardCalculator.equalButton().find().click();
-        Assert.assertEquals(standardCalculator.result().find().getText(), "Display is 4");
+        standardCalculator.numButton(2).findElement().click();
+        standardCalculator.plusButton().findElement().click();
+        standardCalculator.numButton(2).findElement().click();
+        standardCalculator.equalButton().findElement().click();
+        Assert.assertEquals(standardCalculator.result().findElement().getText(), "Display is 4");
     }
 }

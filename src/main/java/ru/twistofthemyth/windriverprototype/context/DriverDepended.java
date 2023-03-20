@@ -1,7 +1,6 @@
 package ru.twistofthemyth.windriverprototype.context;
 
 import io.appium.java_client.windows.WindowsDriver;
-import io.appium.java_client.windows.WindowsElement;
 import org.openqa.selenium.WebDriver;
 
 public interface DriverDepended {
@@ -11,9 +10,9 @@ public interface DriverDepended {
     }
 
     @SuppressWarnings("unchecked")
-    default WindowsDriver<WindowsElement> getWindowsDriver() {
-        if (getDriver() instanceof WindowsDriver<?>) {
-            return (WindowsDriver<WindowsElement>) getDriver();
+    default WindowsDriver getWindowsDriver() {
+        if (getDriver() instanceof WindowsDriver) {
+            return (WindowsDriver) getDriver();
         } else {
             throw new IllegalStateException();
         }
